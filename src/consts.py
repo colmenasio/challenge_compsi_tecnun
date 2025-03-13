@@ -16,3 +16,6 @@ data_paths = ['../data/202201_Movilidad_obligada_distritos.csv', '../data/202202
              '../data/202407_Movilidad_obligada_distritos.csv', '../data/202408_Movilidad_obligada_distritos.csv',
              '../data/202409_Movilidad_obligada_distritos.csv', '../data/202410_Movilidad_obligada_distritos.csv',
              '../data/202411_Movilidad_obligada_distritos.csv', '../data/202412_Movilidad_obligada_distritos.csv']
+
+districts_names = "../data/nombres_distritos.csv"
+districts_population = "../data/poblacion_distritos.csv"
