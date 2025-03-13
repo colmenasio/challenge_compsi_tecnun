@@ -19,3 +19,5 @@ data_paths = ['../data/202201_Movilidad_obligada_distritos.csv', '../data/202202
 
 districts_names = "../data/nombres_distritos.csv"
 districts_population = "../data/poblacion_distritos.csv"
+
+donostia_ids = ["2006901", "2006902", "2006903", "2006904", "2006905", "2006906", "2006907"]

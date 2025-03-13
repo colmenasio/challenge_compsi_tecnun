@@ -1,14 +1,16 @@
+import consts
 import utils
-import pre_processing
 
 if __name__ == '__main__':
     # Import & filter the csv files
-    df = utils.load_raw_data(True, True)
+    df_raw = utils.load_raw_data(True, True)
 
     # Remove missing values
-    df_sanitized = pre_processing.remove_age_na(df)
-    df_sanitized = pre_processing.remove_invalid_ages(df_sanitized)
+    df_sanitized = utils.remove_invalid_ages(utils.remove_age_na(df_raw))
 
-    #
+    # Partition df according to direction of traffic
+    outbound_df, inbound_df, inner_df = utils.traffic_based_partition(df_raw)
 
-    utils.summary(df)
+    print(f"Outbound total: {outbound_df["personas"].sum()}")
+    print(f"Inbound total: {inbound_df["personas"].sum()}")
+    print(f"Inner total: {inner_df["personas"].sum()}")
