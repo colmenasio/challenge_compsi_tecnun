@@ -23,11 +23,11 @@ if __name__ == '__main__':
 
     # Get all instances of travels from 01002 to 2006907
     relevant_columns = utils.get_cols_from_to(df_sanitized,"01002", "2006907")
-    print(f"Relevant cols 1: \n{relevant_columns}\n\n")
+    print(f"Relevant cols 1: \n{relevant_columns}\n Estimated {relevant_columns["avrg_displacements"].sum()} displacements\n\n")
 
     # Get all instances of travels from 01002 to Donostia
     relevant_columns = utils.get_cols_from_to(df_sanitized, "01002", consts.donostia_ids)
-    print(f"Relevant cols 2: \n{relevant_columns}\n\n")
+    print(f"Relevant cols 2: \n{relevant_columns}\n Estimated {relevant_columns["avrg_displacements"].sum()} displacements\n\n")
     del relevant_columns
 
     ###### IdConverter example use:
