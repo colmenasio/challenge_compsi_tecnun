@@ -1,5 +1,6 @@
 import consts
 import utils
+from src.id_resolver import IdResolver
 
 if __name__ == '__main__':
     # Import & filter the csv files
@@ -14,8 +15,23 @@ if __name__ == '__main__':
 
     # Partition df according to direction of traffic
     outbound_df, inbound_df, inner_df = utils.traffic_based_partition(df_sanitized)
-    del df_raw, df_sanitized
+    del df_raw
 
     print(f"Outbound total: {outbound_df["avrg_displacements"].sum()}")
     print(f"Inbound total: {inbound_df["avrg_displacements"].sum()}")
     print(f"Inner total: {inner_df["avrg_displacements"].sum()}")
+
+    # Get all instances of travels from 01002 to 2006907
+    relevant_columns = utils.get_cols_from_to(df_sanitized,"01002", "2006907")
+    print(f"Relevant cols 1: \n{relevant_columns}\n\n")
+
+    # Get all instances of travels from 01002 to Donostia
+    relevant_columns = utils.get_cols_from_to(df_sanitized, "01002", consts.donostia_ids)
+    print(f"Relevant cols 2: \n{relevant_columns}\n\n")
+    del relevant_columns
+
+    ###### IdConverter example use:
+    resolver = IdResolver()
+    print("\n\nName and population associated with id 01009_AM are:")
+    print(resolver.resolve_name("01009_AM"))
+    print(resolver.resolve_population("01009_AM"))

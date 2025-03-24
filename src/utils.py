@@ -1,5 +1,6 @@
 from typing import Tuple
 
+import pandas
 import pandas as pd
 
 import filter
@@ -73,3 +74,9 @@ def expand(i_df: pd.DataFrame,
         df["avrg_displacements"] = df["personas"] * df["avrg_recurrence"]
 
     return  df
+
+def get_cols_from_to(df: pandas.DataFrame, origen_idx: str | list[str], destino_idx: str | list[str]):
+    if isinstance(origen_idx, str): origen_idx = [origen_idx]
+    if isinstance(destino_idx, str): destino_idx = [destino_idx]
+    relevant_cols = df[(df["origen"].isin(origen_idx)) & (df["destino"].isin(destino_idx))].copy()
+    return relevant_cols
