@@ -25,11 +25,20 @@ class IdResolver:
 
         self._initialized = True
 
-    def resolve_name(self, id: str):
-        return self.df.loc[id, "name"]
+    def resolve_name(self, id: str, display_missing = False):
+        try:
+            return self.df.loc[id, "name"]
+        except KeyError:
+            if display_missing: print(f"Warning: id {id} not found in the name dataframe")
+            return 0
 
-    def resolve_population(self, id: str):
-        return self.df.loc[id, "population"]
+
+    def resolve_population(self, id: str, display_missing = False):
+        try:
+            return self.df.loc[id, "population"]
+        except KeyError:
+            if display_missing: print(f"Warning: id {id} not found in the population dataframe")
+            return 0
 
 
     def __repr__(self):

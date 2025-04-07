@@ -10,7 +10,7 @@ if __name__ == '__main__':
     df_sanitized = utils.remove_invalid_ages(utils.remove_age_na(df_raw))
 
     # Further develop the dataframe
-    utils.expand(df_sanitized, in_place=True)
+    df_sanitized = utils.expand(df_sanitized, in_place=False)
     utils.summary(df_sanitized)
 
     # Partition df according to direction of traffic
